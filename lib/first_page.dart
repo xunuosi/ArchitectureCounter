@@ -38,9 +38,23 @@ class PathState extends State<_MyHomePage> {
 
   // 后尺输入值
   String backValue = "";
+  FocusNode _myFocusNode;
 
   PathState(this.title) {
     getSavePath();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _myFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _myFocusNode.dispose();
+
+    super.dispose();
   }
 
   Future<void> getSavePath() async {
@@ -105,6 +119,8 @@ class PathState extends State<_MyHomePage> {
                           frontValue = text;
                           changeNextEnable();
                         },
+                        textInputAction: TextInputAction.next,
+                        onSubmitted: (String text) => FocusScope.of(context).requestFocus(_myFocusNode),
                       ),
                     ),
                     Expanded(
@@ -125,6 +141,8 @@ class PathState extends State<_MyHomePage> {
                           backValue = text;
                           changeNextEnable();
                         },
+                        textInputAction: TextInputAction.done,
+                        focusNode: _myFocusNode,
                       ),
                     )
                   ],
