@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:architecture_counter/bean.dart';
+import 'package:architecture_counter/db/model/bean.dart';
 import 'package:flutter/material.dart';
 import 'package:directory_picker/directory_picker.dart';
 import 'package:logger/logger.dart';
@@ -200,9 +200,11 @@ class PathState extends State<_MyHomePage> {
       allowFolderCreation: true,
     );
 
-    setState(() {
-      selectedDirectory = pickDir;
-    });
+    if (pickDir != null) {
+      setState(() {
+        selectedDirectory = pickDir;
+      });
+    }
   }
 
   void changeNextEnable() {

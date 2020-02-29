@@ -1,4 +1,4 @@
-import 'package:architecture_counter/bean.dart';
+import 'package:architecture_counter/db/model/bean.dart';
 import 'package:architecture_counter/end_page.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
